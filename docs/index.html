@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="assets/img/basic/favicon.png" type="image/png">
+    <title>MLC Online API</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/app.css">
+
+    <style>
+        .loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F5F8FA;
+            z-index: 9998;
+            text-align: center;
+        }
+
+        .plane-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+</head>
+<body>
+<!-- Pre loader -->
+<div id="loader" class="loader">
+    <div class="plane-container">
+        <div class="l-s-2 blink">LOADING</div>
+    </div>
+</div>
+
+<div id="app" class="paper-loading">
+<main class="page">
+    <!-- Header -->
+<nav class="mainnav navbar navbar-default justify-content-between">
+    <div class="container relative">
+        <a class="offcanvas dl-trigger paper-nav-toggle" data-toggle="offcanvas"
+           aria-expanded="false" aria-label="Toggle navigation">
+            <i></i>
+        </a>
+        <a class="navbar-brand" href="index.html">
+            <img class="d-inline-block align-center" alt="" src="assets/img/basic/logo.png" width="64">
+            <span style="margin-left: 12px;" class="mlc-header">API Registry</span>
+        </a>
+        <div class="paper_menu">
+            <div id="dl-menu" class="xv-menuwrapper responsive-menu">
+    <ul class="dl-menu align-items-center">
+        <li><a href="#">Guidelines</a></li>
+        <li><a href="#">Submitted</a></li>
+        <li><a href="#">Approved</a></li>
+        <li><a href="login.html">
+            Published
+        </a>
+        </li>
+    </ul>
+</div>
+<!-- Login modal -->
+        </div>
+    </div>
+</nav>
+    <div class="search-section">
+        <div class="container">
+            <h1>MLC Weath Documentation
+                <!-- <small>version: 1.0</small> -->
+            </h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+            <aside class="main-sidebar ">
+    <div class="">
+        <section class="sidebar p-t-b-40">
+
+            <ul class="sidebar-menu scroll">
+                <li class="header">GETTING STARTED</li>
+                <li>
+                        <a href="#introduction">
+                               <span>Introduction</span>
+                            </a>
+
+                    <a href="#introduction">
+                       <span>Quick Start</span>
+                    </a>
+                    <a href="#introduction">
+                           <span>Environments</span>
+                        </a>
+                        <a href="#introduction">
+                                <span>Access</span>
+                            </a>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                     
+                        <span>FAQ</span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="#structure"><i class="icon icon-circle-o"></i> Directory Structure</a>
+                        </li>
+                        <li><a href="#partials"><i class="icon icon-folder5"></i>Partials</a></li>
+                    </ul>
+                </li>
+                <li class="header">AUTHENTICATION</li>
+                <li>
+                    <a href="#main_menu">
+                        <span class="badge badge-post text-bg-green pull-left">POST</span><span style="margin-left: 8px;">/auth/login</span>
+                    </a>
+                    <a href="#main_menu">
+                        <span class="badge badge-put text-bg-green pull-left">PUT</span><span style="margin-left: 8px;">/auth/token</span>
+                    </a>
+                </li>
+                <li class="header">ACCOUNTS</li>
+
+                <li>
+                    <a href="#main_menu">
+                        <span class="badge badge-get text-bg-green pull-left" style="width: 50px; margin-right: 8px;">GET</span><span>/accounts</span>
+                    </a>
+                    <a href="#main_menu">
+                        <span class="badge badge-get text-bg-green pull-left" style="width: 50px; margin-right: 8px;">GET</span><span>/account/{accountNumber}</span>
+                    </a>
+                </li>
+                <li class="header">TRANSACTIONS</li>
+                <li>
+                    <a href="#main_menu">
+                        <span class="badge badge-get text-bg-orange pull-left" style="width: 50px; margin-right: 8px;">GET</span><span>/transactions</span>
+                    </a>
+                    <a href="#main_menu">
+                        <span class="badge badge-get text-bg-orange pull-left" style="width: 50px; margin-right: 8px;">GET</span><span>/transaction/{transactionId}</span>
+                    </a>
+                </li>
+
+                <li class="header">REPORTS</li>
+                <li>
+                    <a href="#main_menu">
+                        <span class="badge badge-get text-bg-yellow pull-left" style="width: 50px; margin-right: 8px;">GET</span><span>/reports</span>
+                    </a>
+                    <a href="#main_menu">
+                        <span class="badge badge-get text-bg-yellow pull-left" style="width: 50px; margin-right: 8px;">GET</span><span>/report/{reportType}</span>
+                    </a>
+                </li>
+              
+                <li class="header">UTILITIES</li>
+                <li>
+                    <a href="#main_menu">
+                        <span class="badge badge-get text-bg-green pull-left" style="width: 50px; margin-right: 8px;">POST</span><span>/document/virusscan</span>
+                    </a>
+                </li>
+
+
+                <li class="header">API STAGES</li>
+         
+                <li><a href="#"><i class="icon icon-circle-o text-yellow"></i> <span>Draft</span></a>
+                </li>
+                <li><a href="#"><i class="icon icon-circle-o text-orange"></i>
+                    <span>Review</span></a>
+                </li>
+                <li><a href="#"><i class="icon icon-circle-o text-green"></i> <span>Published</span></a>
+                </li>
+                <li><a href="#"><i class="icon icon-circle-o text-grey"></i> <span>Deprecated</span></a>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <!-- /.sidebar -->
+</aside>
+            </div>
+            <article class="col-md-9 p-b-40 b-l p-40">
+                <section id="introduction">
+                    <div class="row">
+                        <div class="col-md-12">
+                              
+                            <h4><i class="icon icon-document-code"></i> Introduction</h4>
+                            <hr>
+                            <div class="alert alert-info" role="alert">
+                                    <p>This documentation is auto-generated and always evolving. We ask that our developers contributions and keep this document up to date. To contribute, simply login to github with your AUR credentials and begin editing the markdown documents located <a href="#">here</a></a>.</p>
+                                </div>
+                            <p>
+                                Welcome to the MLC Online API Registry. This is the central repository, location and hub for all MLC related 
+                                API's and documentation. It contains the aggregated swagger docs of all our service engines as well as all upcoming
+                                api's in development.
+                                
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="structure" class="">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4><i class="icon icon-folders"></i> Quick Start</h4>
+                            <hr>
+                            <p> If you would like to build and run this site locally on your environment, do the following</p>
+                            <p>Install Yarn</p>
+                            <div class="alert alert-info" role="alert" style="width: 80px;">
+                                    <span>MacOS</span> </div>
+                                    <figure>
+                                            <pre class=" language-bash"><code class=" language-bash">$ brew install yarn</code></pre></figure>
+                                    <div class="alert alert-info" role="alert" style="width: 80px;">
+                                            <span>Linux</span> </div>
+                                            <figure>
+                                                    <pre class=" language-bash"><code class=" language-bash">$ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+$ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+$ sudo apt-get update && sudo apt-get install yarn</code></pre></figure>
+                                                        <p>Clone Repo</p>
+                            <figure>
+                                    <pre class=" language-bash"><code class=" language-bash">$ git clone https://mlc.github.com/api
+$ cd api
+$ npm install gulp-cli -g
+$ yarn install
+$ gulp
+$ gulp watch</code></pre>
+                                    </figure>
+                           
+                        </div>
+                     
+                        
+                    </div>
+                    <section id="partials">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3><i class="icon icon-folder5"></i> Site Structure</h3>
+                                <hr>
+                                <p>
+                                    This site is using partials folder to inject some common html files like header and
+                                    footer.
+                                </p>
+                                <table class="table table-bordered table-striped">
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row"><code style="color: black">_head.html</code></th>
+                                        <td>Basic HTML meta tags and everything that could be in <code>&lt;head&gt;&lt;/head&gt;</code>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="color: black"><code style="color: black">_foot.html</code></th>
+                                        <td>Body & wrapper close</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="color: black"><code style="color: black">_header.html</code></th>
+                                        <td>Main Navigation or menu</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="color: black"><code style="color: black">_header.html</code></th>
+                                        <td>Responsible for site pre header</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="color: black"><code style="color: black">_footer.html</code></th>
+                                        <td>Footer of your site.</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="color: black"><code style="color: black">_script.html</code></th>
+                                        <td>Responsible for all site scripts</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                </div>
+            </article>
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class=" col-lg-2 col-xl-3 col-12 responsive-phone"><a href="#" class="brand">
+                <img src="assets/img/basic/logo.png" alt="MLC">
+                <span class="circle"></span>
+            </a>
+            </div>
+            <div class="col-6  col-md-4 col-lg-2">
+                <h6>Links</h6>
+                <ul class="footer-links">
+                    <li><a href="#">Getting Started</a>
+                    </li>
+                    <li><a href="#">Authentication</a>
+                    </li>
+                    <li><a href="#">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6  col-md-4 col-lg-2">
+                <h6>APIs</h6>
+                <ul class="footer-links">
+                        <li><a href="#">Authentication</a>
+                        </li>
+                    <li><a href="#accounts">Accounts</a>
+                    </li>
+                    <li><a href="#transactions">Transactions</a>
+                    </li>
+                    <li><a href="#reports">Reports</a>
+                    </li>
+                    <li><a href="#utilities">Utilities</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6  col-md-4 col-lg-2">
+                <h6>Build Version</h6>
+                <ul class="footer-links">
+                    <li>v3022019.1422</a>
+                    </li>
+                    </ul>
+            </div>
+            <div class="col-6 col-md-12 col-12 col-xl-3 responsive-phone">
+               
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Login modal -->
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLogin">
+    <div class="modal-dialog width-400" role="document">
+        <div class="modal-content no-r "><a href="#" data-dismiss="modal" aria-label="Close"
+                                            class="paper-nav-toggle active"><i></i></a>
+            <div
+                    class="modal-body no-p">
+                <div class="text-center p-40 p-b-0">
+                    <img src="assets/img/dummy/u4.png" alt="">
+                    <h3>Welcome Back</h3>
+                    <p class="p-t-b-20">Hey Soldier welcome back signin now there is lot of new stuff waiting
+                        for you</p>
+                </div>
+                <div class="light p-40 b-t-b">
+                    <form action="dashboard2.html">
+                        <div class="form-group has-icon"><i class="icon-envelope-o"></i>
+                            <input type="text" class="form-control form-control-lg"
+                                   placeholder="Email Address">
+                        </div>
+                        <div class="form-group has-icon"><i class="icon-user-secret"></i>
+                            <input type="text" class="form-control form-control-lg"
+                                   placeholder="Password">
+                        </div>
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Log In">
+                        <small class="forget-pass">Have you forgot your username or password ?</small>
+                    </form>
+                </div>
+                <div class="p-40"><a href="#" class="btn btn-lg btn-block btn-social facebook">
+                    <i class="icon-facebook"></i> Login with Facebook
+                </a>
+                    <a href="#" class="btn btn-lg btn-block btn-social twitter">
+
+                        <i class="icon-twitter"></i> Login with Twitter
+
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- SignUp modal -->
+<div class="modal fade" id="modalSignUp" tabindex="-1" role="dialog" aria-labelledby="modalSignUp">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content no-r "><a href="#" data-dismiss="modal" aria-label="Close"
+                                            class="paper-nav-toggle active"><i></i></a>
+            <div
+                    class="modal-body no-p">
+                <div class="row">
+                    <div class="col-lg-5 grid">
+                        <div class="p-40">
+                            <h5 class="p-t-40">Sign Up Using Social Account</h5>
+                            <p class="p-t-b-20">Hey Soldier welcome back signin now there is lot of new stuff waiting
+                                for you</p> <a href="#" class="btn btn-lg btn-block btn-social facebook">
+                            <i class="icon-facebook"></i> Login with Facebook
+                        </a>
+                            <a href="#" class="btn btn-lg btn-block btn-social twitter">
+
+                                <i class="icon-twitter"></i> Login with Twitter
+
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="light p-t-b-40">
+                            <div class="p-40">
+                                <h5 class="p-b-20">Create New User Account</h5>
+                                <form action="dashboard2.html ">
+                                    <div class="form-group has-icon"><i class="icon-user-circle"></i>
+                                        <input type="text" class="form-control form-control-lg"
+                                               placeholder="Your Name">
+                                    </div>
+                                    <div class="form-group has-icon"><i class="icon-envelope-o"></i>
+                                        <input type="text" class="form-control form-control-lg"
+                                               placeholder="Email Address">
+                                    </div>
+                                    <div class="form-group has-icon"><i class="icon-user-secret"></i>
+                                        <input type="text" class="form-control form-control-lg"
+                                               placeholder="Password">
+                                    </div>
+                                    <div class="form-group has-icon"><i class="icon-repeat"></i>
+                                        <input type="text" class="form-control form-control-lg"
+                                               placeholder="Confirm Password">
+                                    </div>
+                                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Sign Up Now">
+                                    <p class="forget-pass">A verification email wil be sent to you</p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--End Page page_wrrapper -->
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>
